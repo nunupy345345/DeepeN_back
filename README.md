@@ -6,6 +6,9 @@
 2. docker compose up -d
 3. http://localhost:8080 にアクセス
 
+### test方法
+Postmanがおすすめ！
+
 ### docker内のbashを触る
 1. docker ps でコンテナidを入手
 2. docker exec -it <コンテナID> bash
