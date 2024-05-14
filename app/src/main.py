@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from services.test import Test
-from models import TestModel
+from .services.test import Test
+from .models import TestModel
 
 app = FastAPI()
 
