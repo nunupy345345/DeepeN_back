@@ -6,18 +6,6 @@ from models import TestModel
 app = FastAPI()
 
 
-@app.post("/sinnryoku")
-def sinnryoku(req:TestModel):
-  try:
-    print(req.word)
-    test_obj = Test(req.word)
-    result = test_obj.sinnryoku()
-    return {"result": result}
-  
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
-
-
 
 @app.get("/")
 def hello_world():
@@ -34,6 +22,19 @@ def test(req:TestModel):
     test_obj = Test(req.word) # Testクラスのインスタンスを作成
     result = test_obj.test()
     return {"result": result}
+    
+  except Exception as e:
+    # error発生したときにHTTP Exceptionを発生
+    raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
+  
+
+@app.post("/sinnryoku")
+def hira(req:TestModel):
+  try:
+    print(req.word)
+    test_obj = Test(req.word) # Testクラスのインスタンスを作成
+    result = test_obj.hira()
+    return {"ペン語": result}
     
   except Exception as e:
     # error発生したときにHTTP Exceptionを発生
