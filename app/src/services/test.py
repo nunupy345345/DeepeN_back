@@ -1,13 +1,13 @@
 from pykakasi import kakasi
-import csv
 
 
 # import csv
-# csv_path = 'PenLanguageTable.csv'
-# with open(csv_path, newline='' ,encoding="utf-8") as f:
-#     reader = csv.DictReader(f)
-#     for arr in reader:
-#         print(dict(arr))
+# data={}
+# with open('PenLanguageTable.csv', 'r') as f:
+#    reader = csv.DictReader(f)
+#    for row in reader:
+#        data[row['日本語']] = row['ペン語']
+
 
 
 
@@ -61,6 +61,6 @@ class Test:
       out_word += converted_word['hira']
     List = list(out_word)
     for i in List:
-      PenLanguage += dict.get(i,"?") + ","
+      PenLanguage += dict.get(i,"?") + "　"
     
     return PenLanguage
