@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from services.test import Test
 from models import TestModel
 
+
 app = FastAPI()
 
 
@@ -29,7 +30,7 @@ def test(req:TestModel):
   
 
 @app.post("/sinnryoku")
-def hira(req:TestModel):
+def deepen(req:TestModel):
   try:
     print(req.word)
     test_obj = Test(req.word) # Testクラスのインスタンスを作成

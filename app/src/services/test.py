@@ -1,4 +1,15 @@
 from pykakasi import kakasi
+import csv
+
+
+# import csv
+# csv_path = 'PenLanguageTable.csv'
+# with open(csv_path, newline='' ,encoding="utf-8") as f:
+#     reader = csv.DictReader(f)
+#     for arr in reader:
+#         print(dict(arr))
+
+
 
 class Test:
   """
