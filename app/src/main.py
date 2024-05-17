@@ -5,6 +5,20 @@ from models import TestModel
 
 app = FastAPI()
 
+
+# @app.post("/sinnryoku")
+# def test(req:TestModel):
+#   try:
+#     print(req.word)
+#     test_obj = Test(req.word)
+#     result = test_obj.test()
+#     return {"result(hira)": result}
+  
+#   except Exception as e:
+#     raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
+
+
+
 @app.get("/")
 def hello_world():
     return {"message": "Hello World"}

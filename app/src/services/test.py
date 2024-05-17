@@ -19,7 +19,12 @@ class Test:
     -----------------
     return out_word: list -> 変換した後のlist
     """
-    out_word = self.kakasi.convert(self.in_word)
+    # out_word = self.kakasi.convert(self.in_word)
+
+    result = self.kakasi.convert(self.in_word)
+    out_word = ""
+    for converted_word in result:
+      out_word += converted_word['hira']
     
     return out_word
     
