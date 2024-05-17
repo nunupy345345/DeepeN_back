@@ -23,9 +23,17 @@ class Test:
 
     result = self.kakasi.convert(self.in_word)
     out_word = ""
+    PenLanguage = ""
+    dict = {
+      "あ":"",
+      "い":"",
+      "う":"",
+      "a":"トン ツー"
+    }
     for converted_word in result:
       out_word += converted_word['hira']
+    List = list(out_word)
+    for i in List:
+      PenLanguage += dict.get(i,"?")
     
-    return out_word
-    
-    
+    return PenLanguage
