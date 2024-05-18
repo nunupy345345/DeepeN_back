@@ -26,12 +26,21 @@ class Test:
     return out_word
 
 
-
+  #ひらがなに変換
   def hira(self) -> list:
+    result = self.kakasi.convert(self.in_word)
+    out_hira = ""
+    for i in result:
+      out_hira += i["hira"]
+    return out_hira
+
+
+  # ペン語に翻訳
+  def translation(self) -> list:
     
     result = self.kakasi.convert(self.in_word)
     out_word = ""
-    PenLanguage = ""
+    out_pen = ""
     Dict = {
       "あ":"ぺぺ",
       "い":"ぺーぺ",
@@ -163,6 +172,6 @@ class Test:
       out_word += converted_word['hira']
     List = list(out_word)
     for i in List:
-      PenLanguage += dict.get(i,"?") + "　"
+      out_pen += Dict.get(i,"?") + "　"
     
-    return PenLanguage
+    return out_pen

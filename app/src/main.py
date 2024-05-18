@@ -29,13 +29,26 @@ def test(req:TestModel):
     raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
   
 
-@app.post("/sinnryoku")
+@app.post("/deepen") # ペン語
 def deepen(req:TestModel):
   try:
     print(req.word)
     test_obj = Test(req.word) # Testクラスのインスタンスを作成
-    result = test_obj.hira()
+    result = test_obj.translation()
     return {"ペン語": result}
+    
+  except Exception as e:
+    # error発生したときにHTTP Exceptionを発生
+    raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
+   
+    
+@app.post("/hiragana") # ひらがな
+def hiragana(req:TestModel):
+  try:
+    print(req.word)
+    test_obj = Test(req.word) # Testクラスのインスタンスを作成
+    result = test_obj.hira()
+    return {"ひらがな": result}
     
   except Exception as e:
     # error発生したときにHTTP Exceptionを発生
