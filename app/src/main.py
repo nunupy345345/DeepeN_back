@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from services.test import Test
+from services.test import Hira
+from services.test import Deepen
 from models import TestModel
 
 
@@ -33,7 +35,7 @@ def test(req:TestModel):
 def deepen(req:TestModel):
   try:
     print(req.word)
-    test_obj = Test(req.word) # Testクラスのインスタンスを作成
+    test_obj = Deepen(req.word) # Deepenクラスのインスタンスを作成
     result = test_obj.translation()
     return {"ペン語": result}
     
@@ -46,7 +48,7 @@ def deepen(req:TestModel):
 def hiragana(req:TestModel):
   try:
     print(req.word)
-    test_obj = Test(req.word) # Testクラスのインスタンスを作成
+    test_obj = Hira(req.word) # Hiraクラスのインスタンスを作成
     result = test_obj.hira()
     return {"ひらがな": result}
     

@@ -1,7 +1,4 @@
 from pykakasi import kakasi
-# import dictfile
-# DICT = dictfile.dict
-
 
 class Test:
   """
@@ -27,6 +24,11 @@ class Test:
 
 
   #ひらがなに変換
+class Hira:
+  def __init__(self, in_word) -> None:
+    self.kakasi = kakasi()
+    self.in_word = in_word
+
   def hira(self) -> list:
     result = self.kakasi.convert(self.in_word)
     out_hira = ""
@@ -35,13 +37,20 @@ class Test:
     return out_hira
 
 
+
   # ペン語に翻訳
+class Deepen():
+  def __init__(self, in_word) -> None:
+    self.kakasi = kakasi()
+    self.in_word = in_word
+
   def translation(self) -> list:
     
     result = self.kakasi.convert(self.in_word)
     out_word = ""
     out_pen = ""
-    Dict = {
+
+    dict = {
       "あ":"ぺぺ",
       "い":"ぺーぺ",
       "う":"ンンー",
@@ -172,6 +181,6 @@ class Test:
       out_word += converted_word['hira']
     List = list(out_word)
     for i in List:
-      out_pen += Dict.get(i,"?") + "　"
+      out_pen += dict.get(i,"?") + "　"
     
     return out_pen
