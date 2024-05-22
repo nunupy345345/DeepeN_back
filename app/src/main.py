@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from services.test import Test
 from services.test import Hira
-from services.test import Deepen
+from services.translation import Deepen
 from models import TestModel
 from services.dictfile import dictionary
 
