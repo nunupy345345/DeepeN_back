@@ -1,5 +1,5 @@
 from pykakasi import kakasi 
-
+from dict.dictfile import dictionary
 
  # ペン語に翻訳
 class Deepen():
@@ -7,7 +7,7 @@ class Deepen():
     self.kakasi = kakasi()
     self.in_word = in_word
 
-  def translation(self, dict) -> list:
+  def translation(self) -> list:
     result = self.kakasi.convert(self.in_word)
     hiraSentence = ""
     out_pen = ""
@@ -16,6 +16,6 @@ class Deepen():
       hiraSentence += i['hira']
     List = list(hiraSentence)
     for i in List:
-      out_pen += dict.get(i,"?") + "　"
+      out_pen += dictionary.get(i,"?") + "　"
     
     return out_pen

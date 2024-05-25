@@ -4,7 +4,7 @@ from services.test import Test
 from services.test import Hira
 from services.translation import Deepen
 from models import TestModel
-from services.dictfile import dictionary
+# from services.dictfile import dictionary
 
 
 app = FastAPI()
@@ -52,7 +52,7 @@ def deepen(req:TestModel):
   try:
     print(req.word)
     test_obj = Deepen(req.word) # Deepenクラスのインスタンスを作成
-    result = test_obj.translation(dictionary)
+    result = test_obj.translation()
     return {"ペン語": result}
     
   except Exception as e:
