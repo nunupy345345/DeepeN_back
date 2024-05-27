@@ -48,7 +48,7 @@ def hiragana(req:TestModel):
     
 
 
-@app.post("/deepen") # 日本語→ペン語
+@app.post("/fromJtoD") # 日本語→ペン語
 def deepen(req:TestModel):
   try:
     print(req.word)
@@ -62,13 +62,32 @@ def deepen(req:TestModel):
 
 
 
-@app.post("/r_deepen") # ペン語➡︎日本語
+@app.post("/fromDtoJ") # ペン語➡︎日本語
 def deepen(req:TestModel):
   try:
     print(req.word)
     test_obj = R_Deepen(req.word)
     result = test_obj.r_translation(r_dictionary)
     return {"日本語": result}
+    
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
+  
+
+@app.post("/deepen")   #変換方向を自動選択
+def deepen(req:TestModel):
+  try:
+    print(req.word)
+    judgeStr = req.word.replace("ぺ","").replace("ー","").replace("ン","").replace("　","")     #「ぺ、ー、ン、"　"」を除いた文字列を作成
+    if judgeStr == "":      #空ならペン語 → 日本語
+      test_obj = R_Deepen(req.word)
+      result = test_obj.r_translation(r_dictionary)
+      derection = "ペン語 → 日本語"
+    else:
+      test_obj = Deepen(req.word)     #空でないなら日本語 → ペン語
+      result = test_obj.translation(dictionary)
+      derection = "日本語 → ペン語"
+    return {derection: result}
     
   except Exception as e:
     raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
