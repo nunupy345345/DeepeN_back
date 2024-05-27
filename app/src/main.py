@@ -3,8 +3,10 @@ from fastapi.responses import JSONResponse
 from services.test import Test
 from services.test import Hira
 from services.translation import Deepen
+from services.translation import R_Deepen
 from models import TestModel
-# from services.dictfile import dictionary
+from services.dict.dictfile import dictionary
+from services.dict.dictfile import r_dictionary
 
 
 app = FastAPI()
@@ -52,10 +54,21 @@ def deepen(req:TestModel):
   try:
     print(req.word)
     test_obj = Deepen(req.word) # Deepenクラスのインスタンスを作成
-    result = test_obj.translation()
+    result = test_obj.translation(dictionary)
     return {"ペン語": result}
     
   except Exception as e:
     # error発生したときにHTTP Exceptionを発生
     raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
-   
+
+@app.post("/r_deepen") # ペン語
+def deepen(req:TestModel):
+  try:
+    print(req.word)
+    test_obj = R_Deepen(req.word) # Deepenクラスのインスタンスを作成
+    result = test_obj.r_translation(r_dictionary)
+    return {"ペン語": result}
+    
+  except Exception as e:
+    # error発生したときにHTTP Exceptionを発生
+    raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
