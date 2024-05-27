@@ -6,7 +6,7 @@ class Deepen():
     self.kakasi = kakasi()
     self.in_word = in_word
 
-  def translation(self, dict) -> list:
+  def translation(self, dict) -> str:
     result = self.kakasi.convert(self.in_word)
     hiraSentence = ""
     out_pen = ""
@@ -16,7 +16,7 @@ class Deepen():
     List = list(hiraSentence)
     for i in List:
       out_pen += dict.get(i,"?") + "　"
-    
+    out_pen = out_pen.rstrip()
     return out_pen
 
 
@@ -24,7 +24,7 @@ class R_Deepen():
   def __init__(self, in_word) -> None:
     self.in_word = in_word
 
-  def r_translation(self, dict) -> list:
+  def r_translation(self, dict) -> str:
     out_pen = ""
     List = self.in_word.split("　")
     for i in List:

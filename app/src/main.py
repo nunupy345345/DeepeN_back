@@ -39,17 +39,16 @@ def test(req:TestModel):
 def hiragana(req:TestModel):
   try:
     print(req.word)
-    test_obj = Hira(req.word) # Hiraクラスのインスタンスを作成
+    test_obj = Hira(req.word)
     result = test_obj.hira()
     return {"ひらがな": result}
     
   except Exception as e:
-    # error発生したときにHTTP Exceptionを発生
     raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
     
 
 
-@app.post("/deepen") # ペン語
+@app.post("/deepen") # 日本語→ペン語
 def deepen(req:TestModel):
   try:
     print(req.word)
@@ -61,14 +60,15 @@ def deepen(req:TestModel):
     # error発生したときにHTTP Exceptionを発生
     raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
 
-@app.post("/r_deepen") # ペン語
+
+
+@app.post("/r_deepen") # ペン語➡︎日本語
 def deepen(req:TestModel):
   try:
     print(req.word)
-    test_obj = R_Deepen(req.word) # Deepenクラスのインスタンスを作成
+    test_obj = R_Deepen(req.word)
     result = test_obj.r_translation(r_dictionary)
-    return {"ペン語": result}
+    return {"日本語": result}
     
   except Exception as e:
-    # error発生したときにHTTP Exceptionを発生
     raise HTTPException(status_code=500, detail=f"Error tests: {str(e)}")
