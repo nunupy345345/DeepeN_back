@@ -21,14 +21,17 @@ class Test:
     return out_word: list -> 変換した後のlist
     """
     out_word = self.kakasi.convert(self.in_word)
-    
     return out_word
-  
 
+  #ひらがなに変換
+class Hira:
+  def __init__(self, in_word) -> None:
+    self.kakasi = kakasi()
+    self.in_word = in_word
 
-
-
-
-  
-    
-    
+  def hira(self) -> list:
+    result = self.kakasi.convert(self.in_word)
+    out_hira = ""
+    for i in result:
+      out_hira += i["hira"]
+    return out_hira
