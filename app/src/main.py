@@ -1,10 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
-from services.test import Test
-from services.test import Hira
-from services.translation import Deepen
-from services.translation import R_Deepen
-from models import TestModel
+from fastapi.middleware.cors import CORSMiddleware
+from src.services.test import Test
+from src.services.test import Hira
+from src.services.translation import Deepen
+from src.services.translation import R_Deepen
+from src.models import TestModel
 import random as r
 
 app = FastAPI()
