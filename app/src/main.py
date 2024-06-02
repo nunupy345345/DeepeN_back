@@ -79,7 +79,7 @@ def omatu():
 
       }
     
-    return detail
+    return {"detail": detail}
   except Exception as e:
     raise HTTPException(status_code=500, detail=f"Error omatu: {str(e)}")
 
