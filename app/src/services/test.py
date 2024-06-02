@@ -1,5 +1,6 @@
 from pykakasi import kakasi
-
+import random as r
+import tkinter,tkinter.messagebox
 class Test:
   """
   Test: pykakasiのテスト用class
@@ -21,7 +22,6 @@ class Test:
     """
     out_word = self.kakasi.convert(self.in_word)
     return out_word
-
 
   #ひらがなに変換
 class Hira:
