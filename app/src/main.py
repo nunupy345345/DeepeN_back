@@ -6,6 +6,8 @@ from src.services.test import Hira
 from src.services.translation import Deepen
 from src.services.translation import R_Deepen
 from src.models import TestModel
+from src.services.dict.dictfile import dictionary
+from src.services.dict.dictfile import r_dictionary
 import random as r
 
 app = FastAPI()
