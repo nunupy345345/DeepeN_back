@@ -150,7 +150,7 @@ def deepen(req:TestModel):
 def deepen(req:TestModel):
   try:
     print(req.word)
-    judgeStr = req.word.replace("ぺ","").replace("ー","").replace("ン","").replace("　","")     #「ぺ、ー、ン、"　"」を除いた文字列を作成
+    judgeStr = req.word.replace("ぺ","").replace("ー","").replace("ン","").replace("　","").replace("？","").replace(" ","").replace("\n","")    #「ぺ、ー、ン、"　"」を除いた文字列を作成
     if judgeStr == "":      #空ならペン語 → 日本語
       test_obj = R_Deepen(req.word)
       result = test_obj.r_translation(r_dictionary)
